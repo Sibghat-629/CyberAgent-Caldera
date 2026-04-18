@@ -1,0 +1,248 @@
+:root {
+    --bg-color: #05050a;
+    --panel-bg: rgba(20, 20, 30, 0.7);
+    --border-color: rgba(0, 242, 255, 0.2);
+    --accent-color: #00f2ff;
+    --accent-glow: 0 0 15px rgba(0, 242, 255, 0.5);
+    --text-primary: #e0e0e0;
+    --text-secondary: #888899;
+    --success: #00ff88;
+    --error: #ff4d4d;
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'Fira Code', 'Courier New', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Background Animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, #101020 0%, #05050a 100%);
+    z-index: -1;
+}
+
+/* Glassmorphism Sidebar */
+aside {
+    width: 320px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 3rem;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-color);
+    box-shadow: var(--accent-glow);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--accent-color);
+}
+
+.nav-section {
+    margin-bottom: 2rem;
+}
+
+.nav-section h3 {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.scenario-list {
+    list-style: none;
+}
+
+.scenario-item {
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.scenario-item:hover {
+    background: rgba(0, 242, 255, 0.05);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.scenario-item.active {
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: inset 0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+/* Main Dashboard Area */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    overflow-y: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-grid {
+    display: flex;
+    gap: 2rem;
+}
+
+.status-card {
+    background: var(--panel-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-online { background: var(--success); box-shadow: 0 0 10px var(--success); }
+.status-offline { background: var(--error); box-shadow: 0 0 10px var(--error); }
+
+.status-label { font-size: 0.8rem; color: var(--text-secondary); }
+.status-value { font-weight: 600; font-size: 0.9rem; }
+
+/* Control Panel */
+.execution-panel {
+    background: var(--panel-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.run-btn {
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.run-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--accent-glow);
+}
+
+.run-btn:disabled {
+    background: var(--text-secondary);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Console Output */
+.console-container {
+    flex: 1;
+    background: #000;
+    border-radius: 12px;
+    border: 1px solid #1a1a25;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    min-height: 400px;
+}
+
+.console-line {
+    border-left: 2px solid transparent;
+    padding-left: 12px;
+}
+
+.line-info { color: #00f2ff; }
+.line-success { color: #00ff88; }
+.line-error { color: #fe4a49; }
+.line-agent { color: #fac05e; }
+.line-coordinator { color: #ee6352; }
+
+.loading-dots:after {
+    content: '...';
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }

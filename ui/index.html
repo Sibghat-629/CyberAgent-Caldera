@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Agent | Multi-Agent Orchestrator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <aside>
+        <div class="logo">
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h1>CyberAgent</h1>
+        </div>
+
+        <div class="nav-section">
+            <h3>Agent Scenarios</h3>
+            <ul class="scenario-list" id="scenarioList">
+                <li class="scenario-item loading-dots">Loading scenarios</li>
+            </ul>
+        </div>
+
+        <div class="nav-section" style="margin-top: auto;">
+            <div class="status-card" style="background: transparent; border: none; padding: 0;">
+                <div class="status-indicator status-online"></div>
+                <div>
+                    <div class="status-label">System Node</div>
+                    <div class="status-value" id="nodeName">RSAC-2024-DEMO</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <div class="title-area">
+                <h2 id="currentScenarioTitle">Select a Scenario</h2>
+                <p class="status-label">Live Orchestration Dashboard</p>
+            </div>
+            <div class="status-grid">
+                <div class="status-card">
+                    <div class="status-indicator" id="httpStatus"></div>
+                    <div>
+                        <div class="status-label">HTTP API</div>
+                        <div class="status-value">8000</div>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-indicator status-online"></div>
+                    <div>
+                        <div class="status-label">Environment</div>
+                        <div class="status-value">Python 3.10</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="execution-panel">
+            <div class="panel-header">
+                <div>
+                    <h3>Orchestration Console</h3>
+                    <p class="status-label" id="scenarioDescription">Choose an automated security scenario to begin.</p>
+                </div>
+                <button class="run-btn" id="runBtn" disabled>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    Initialize Agents
+                </button>
+            </div>
+
+            <div class="console-container" id="terminal">
+                <div class="console-line line-info">> System initialized. Waiting for uplink...</div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="status-grid" style="justify-content: flex-end; gap: 1rem;">
+                <p class="status-label">AutoScaling Enabled</p>
+                <p class="status-label">Telemetry: Active</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
